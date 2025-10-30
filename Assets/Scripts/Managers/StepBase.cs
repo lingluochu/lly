@@ -252,10 +252,11 @@ public class StepBase : UnitySingleton<StepBase>
 
     }
 
-    public IEnumerator EyeAdaptation(float targetFocusDistance, float targetAperture, float adaptationSpeed = 3f)
+    public IEnumerator EyeAdaptation(float adaptationSpeed)
     {
+        Debug.Log("开始色彩校正");
         PostManager.instance.enabled = true;//启用后处理脚本
-        PostManager.instance.StartAdaptation(adaptationSpeed, targetFocusDistance, targetAperture);
+        PostManager.instance.StartAdaptation();
         yield return new WaitForSeconds(adaptationSpeed);//等待完成
         PostManager.instance.enabled = false;//禁用后处理脚本
     }
