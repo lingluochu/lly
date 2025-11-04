@@ -260,7 +260,85 @@ public class StepBase : UnitySingleton<StepBase>
         yield return new WaitForSeconds(adaptationSpeed);//等待完成
         PostManager.instance.enabled = false;//禁用后处理脚本
     }
-    
+
+    /// <summary>
+    /// 设置多个物体的激活状态（显示/隐藏）
+    /// 支持通过父物体路径定位同名子物体
+    /// </summary>
+    /// <param name="targets">目标物体列表（每个元素可以是直接物体名或"父物体/子物体"路径）</param>
+    /// <param name="setActive">是否激活（true=显示, false=隐藏）</param>
+    /// <param name="delay">延迟执行时间（秒）</param>
+    /// <param name="onComplete">完成后的回调</param>
+    /// <returns></returns>
+    public IEnumerator SetObjectsActive(
+        List<string> targets,
+        bool setActive,
+        float delay = 0f,
+        UnityAction onComplete = null)
+    {
+        // 延迟等待
+        if (delay >= 0)
+        {
+            yield return new WaitForSeconds(delay);
+        }
+
+        foreach (var target in targets)
+        {
+            // 检查是否使用了路径格式（父物体/子物体）
+            if (target.Contains("/"))
+            {
+                // 分割路径
+                string[] pathParts = target.Split('/');
+                if (pathParts.Length == 2)
+                {
+                    string parentName = pathParts[0];
+                    string childName = pathParts[1];
+
+                    // 查找父物体
+                    Transform parent = Generic.GetNodeInScene(parentName);
+                    if (parent != null)
+                    {
+                        // 在父物体下查找指定名称的子物体
+                        Transform child = parent.Find(childName);
+                        if (child != null)
+                        {
+                            child.gameObject.SetActive(setActive);
+                            Debug.Log($"设置物体 [{parentName}/{childName}] 状态为: {setActive}");
+                        }
+                        else
+                        {
+                            Debug.LogWarning($"在父物体 '{parentName}' 下未找到子物体: {childName}");
+                        }
+                    }
+                    else
+                    {
+                        Debug.LogWarning($"未找到父物体: {parentName}");
+                    }
+                }
+                else
+                {
+                    Debug.LogWarning($"无效的目标路径格式: {target} (正确格式: 父物体名/子物体名)");
+                }
+            }
+            else
+            {
+                // 直接查找物体
+                Transform obj = Generic.GetNodeInScene(target);
+                if (obj != null)
+                {
+                    Debug.Log($"设置物体 [{target}] 状态为: {setActive}");
+                    obj.gameObject.SetActive(setActive);
+                }
+                else
+                {
+                    Debug.LogWarning($"未找到物体: {target}");
+                }
+            }
+        }
+
+        onComplete?.Invoke();
+    }
+
     #endregion
 }
     
