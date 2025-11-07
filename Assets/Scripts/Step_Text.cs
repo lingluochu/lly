@@ -29,7 +29,7 @@ public class Step_Text : StepBase
     public IEnumerator Step1()
     {
         yield return null;
-        yield return EyeAdaptation(10f);
+        //yield return EyeAdaptation(10f);
 
         
     }
