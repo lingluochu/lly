@@ -17,16 +17,14 @@ public class UI_Game : UIBase
     public UI_Game()
     {
         prefabsPath = "UIPrefab/学习模式";
-
-        mLayer = UILayer.BasicLayer;
     }
 
     public override void FindComponents()
     {
         base.FindComponents();
         StarBG = GetObject("学习模式");
-        OneBtn = GetOrAddComponent<Button>("自主学习");
-        TwoBtn = GetOrAddComponent<Button>("按顺序学习");
+        OneBtn = GetOrAddComponent<Button>("锟斤拷锟斤拷学习");
+        TwoBtn = GetOrAddComponent<Button>("锟斤拷顺锟斤拷学习");
     }
 
     public override void Init(params object[] args)

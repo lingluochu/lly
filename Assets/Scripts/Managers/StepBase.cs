@@ -346,8 +346,10 @@ public class StepBase : UnitySingleton<StepBase>
     /// <param name="animName">动画片段名</param>
     /// <param name="onComplete">是否完成</param>
     /// <returns></returns>
-    public IEnumerator SetOldMan(Vector3 position, Quaternion rotation,string animName, UnityAction onComplete = null)
+    public IEnumerator SetOldMan(string positionName,string animName, UnityAction onComplete = null)
     {
+        Vector3 position = Generic.GetNodeInScene(positionName).position;
+        Quaternion rotation = Generic.GetNodeInScene(positionName).rotation;
         GameObject oldMan = Generic.GetNodeInScene("OldMan").gameObject;
         if (oldMan == null)
         {

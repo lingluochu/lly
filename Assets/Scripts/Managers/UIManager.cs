@@ -24,6 +24,7 @@ public class UIManager : UnitySingleton<UIManager>
     public override void Awake()
     {
         base.Awake();
+        
     }
     /// <summary>
     /// ShowUI方法  
@@ -50,18 +51,7 @@ public class UIManager : UnitySingleton<UIManager>
 
         GameObject uiGameObject = LoadManager.instance.Load<GameObject>(uiBase.prefabsPath, canvasTransform);//获取预制体
         
-        // 获取Canvas组件并设置排序
-        Canvas uiCanvas = uiGameObject.GetComponent<Canvas>();
-        if (uiCanvas != null)
-        {
-            // 假设myLayer现在用于表示sortingOrder
-            uiCanvas.sortingOrder = uiBase.canvasSort; 
-        }
-        else
-        {
-            Debug.LogError($"{t.FullName}预制体缺少Canvas组件");
-            return null;
-        }
+        
 
         uiBase.uiName = t.FullName;//设置UI名称
         uiBase.uiGameObject = uiGameObject;//设置UI预制体
