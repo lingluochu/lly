@@ -16,16 +16,15 @@ public class UI_StartGame : UIBase
     public Text _tip;
     public UI_StartGame()
     {
-        prefabsPath = "UIPrefab/��ʼʵѵ";
+        prefabsPath = "UIPrefab/开始实训";
 
-        mLayer = UILayer.BasicLayer;
     }
 
     public override void FindComponents()
     {
         base.FindComponents();
-        StarBG = GetObject("��ʼʵѵ");
-        StartGameBtn = GetOrAddComponent<Button>("��ʼ��Ϸ");
+        StarBG = GetObject("开始按钮");
+        StartGameBtn = GetOrAddComponent<Button>("开始游戏");
     }
 
     public override void Init(params object[] args)
