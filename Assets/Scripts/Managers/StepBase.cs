@@ -338,6 +338,43 @@ public class StepBase : UnitySingleton<StepBase>
 
         onComplete?.Invoke();
     }
+    /// <summary>
+    /// 设置老年人的位置旋转和状态动画（无需等待完成）
+    /// </summary>
+    /// <param name="position">位置</param>
+    /// <param name="rotation">旋转</param>
+    /// <param name="animName">动画片段名</param>
+    /// <param name="onComplete">是否完成</param>
+    /// <returns></returns>
+    public IEnumerator SetOldMan(Vector3 position, Quaternion rotation,string animName, UnityAction onComplete = null)
+    {
+        GameObject oldMan = Generic.GetNodeInScene("OldMan").gameObject;
+        if (oldMan == null)
+        {
+            Debug.LogError(" OldMan 对象未找到！");
+            yield break;
+        }
+        oldMan.transform.position = position;
+        oldMan.transform.rotation = rotation;
+        Animator animator = oldMan.GetComponentInChildren<Animator>();
+        if (animator == null)
+        {
+            Debug.LogError(" OldMan 缺少 Animator 组件！");
+            yield break;
+        }
+        int stateHash = Animator.StringToHash(animName);
+        if (!animator.HasState(0, stateHash))
+        {
+            Debug.LogError(" OldMan 没有动画片段：" + animName);
+            yield break;
+        }
+        else
+        {
+            animator.Play(animName);
+        }
+        onComplete?.Invoke();
+        yield return null;
+    }
 
     #endregion
 }

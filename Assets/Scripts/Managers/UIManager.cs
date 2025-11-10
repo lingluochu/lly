@@ -24,7 +24,6 @@ public class UIManager : UnitySingleton<UIManager>
     public override void Awake()
     {
         base.Awake();
-        canvasTransform = GameObject.Find("UI节点").transform;//获取UI根节点
     }
     /// <summary>
     /// ShowUI方法  

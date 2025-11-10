@@ -4,25 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum UILayer
-{
-    /// <summary>
-    /// 基层 （常在界面 无操作）
-    /// </summary>
-    BasicLayer,
-    /// <summary>
-    /// 中层
-    /// </summary>
-    InterLayer,
-    /// <summary>
-    /// 顶层 
-    /// </summary>
-    TopLayer,
-    /// <summary>
-    /// 系统层
-    /// </summary>
-    SystemLayer,
-}
+
 
 
 public class UIBase //所有UI的基类，定义通用属性和方法
@@ -37,11 +19,6 @@ public class UIBase //所有UI的基类，定义通用属性和方法
     /// UI面板名称
     /// </summary>
     public string uiName { get; set; }
-
-    /// <summary>
-    /// 所在层级
-    /// </summary>
-    public UILayer mLayer = UILayer.BasicLayer;
 
     /// <summary>
     /// 决定该UI的层级

@@ -22,16 +22,15 @@ public class UI_Mission : UIBase
     {
         prefabsPath = "UIPrefab/UI_Mission";
 
-        mLayer = UILayer.BasicLayer;
     }
 
     public override void FindComponents()
     {
         base.FindComponents();
-        FoldBtn = GetOrAddComponent<Button>("ÕÛµþ");
+        FoldBtn = GetOrAddComponent<Button>("ï¿½Ûµï¿½");
         //rectTransform = UIGameObject.GetComponent<RectTransform>();
 
-        Slider = GetOrAddComponent<Slider>("½ø¶ÈÌõ");
+        Slider = GetOrAddComponent<Slider>("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 
         GameObject Content = GetObject("Content");
         if (MissionObj.Count <= 0)
@@ -64,7 +63,7 @@ public class UI_Mission : UIBase
     }
 
     /// <summary>
-    /// µ÷½Ú½ø¶ÈÌõ slider
+    /// ï¿½ï¿½ï¿½Ú½ï¿½ï¿½ï¿½ï¿½ï¿½ slider
     /// </summary>
     /// <param name="value"></param>
     public void AdjustSlider(int value)
@@ -73,7 +72,7 @@ public class UI_Mission : UIBase
     }
 
     /// <summary>
-    /// ¸ßÁÁÏÔÊ¾ÈÎÎñ
+    /// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½
     /// </summary>
     /// <param name="value"></param>
     public void MissionHightLight(int value)
