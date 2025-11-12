@@ -148,5 +148,22 @@ public class UIManager : UnitySingleton<UIManager>
             }
         }
     }
+    /// <summary>
+    /// 设置UI的位置和旋转
+    /// </summary>
+    /// <param name="transformName"></param>
+    public T SetTransform<T>(string transformName) where T : UIBase
+    {
+        var node = Generic.GetNodeInScene(transformName);
+        if (node == null)
+        {
+            Debug.LogError($"[SetPositionAndRotation] Node '{transformName}' not found!");
+            return null;
+        }
+        UIBase uiBase = GetUIBaseFromPool<T>();
+        uiBase.uiGameObject.transform.SetPositionAndRotation(node.position, node.rotation);
+        return null;
+    }
+
 }
 
