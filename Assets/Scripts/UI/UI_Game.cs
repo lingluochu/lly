@@ -11,9 +11,10 @@ public class UI_Game : UIBase
 
     public GameObject ChooseModePanel;
 
-    public Button OneBtn,TwoBtn;
+    public Button OneBtn, TwoBtn;
+    public static bool isEnterFreeMode = false;
+    public static bool isEnterOrderMode = false;
 
-    public Text _tip;
     public UI_Game()
     {
         prefabsPath = "UIPrefab/学习模式";
@@ -22,6 +23,7 @@ public class UI_Game : UIBase
     public override void FindComponents()
     {
         base.FindComponents();
+        uiGameObject.name = "学习模式";
         StarBG = GetObject("学习模式");
         OneBtn = GetOrAddComponent<Button>("自主学习");
         TwoBtn = GetOrAddComponent<Button>("按顺序学习");
@@ -31,15 +33,16 @@ public class UI_Game : UIBase
     {
         base.Init(args);
 
-        string SceneName = args[0].ToString();
 
         OneBtn.onClick.AddListener(() =>
         {
             StarBG.SetActive(false);
+            isEnterFreeMode = true;
         });
         TwoBtn.onClick.AddListener(() =>
         {
             StarBG.SetActive(false);
+            isEnterOrderMode = true;
         });
 
     }
