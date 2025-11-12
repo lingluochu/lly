@@ -31,8 +31,13 @@ public class Step_Text : StepBase
         yield return null;
         yield return SetOldMan("客厅站立1", "Stand_Idle");
         UIManager.instance.ShowUI<UI_StartGame>();
-        UIManager.instance.FreshUI<UI_StartGame>("0");
-
+        UIManager.instance.InitUI<UI_StartGame>();
+        UIManager.instance.SetTransform<UI_StartGame>("客厅开始界面");
+        while(UI_StartGame.isOver == false)
+        {
+            yield return null;
+        }
+        yield return SetOldMan("客厅坐沙发", "Sit_Idle");
     }
 }
 

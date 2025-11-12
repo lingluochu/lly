@@ -144,15 +144,13 @@ public class UIBase //所有UI的基类，定义通用属性和方法
                     });
                 });
             }
-            
+
             return child.GetComponent<T>();//返回获取组件
         }
 
         Debug.LogError(String.Format("您查找的{0}子对象不存在", name));
         return null;
     }
-    
-
     protected UIBase()
     {
 

@@ -14,6 +14,7 @@ public class UI_StartGame : UIBase
     public Button StartGameBtn;
 
     public Text _tip;
+    public static bool isOver = false;
     public UI_StartGame()
     {
         prefabsPath = "UIPrefab/开始实训";
@@ -30,12 +31,10 @@ public class UI_StartGame : UIBase
     public override void Init(params object[] args)
     {
         base.Init(args);
-
-        string SceneName = args[0].ToString();
-
         StartGameBtn.onClick.AddListener(() =>
         {
             StarBG.SetActive(false);
+            isOver = true;
             UIManager.instance.ShowUI<UI_Game>();
         });
 
