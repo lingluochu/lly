@@ -32,6 +32,7 @@ public class Step_Text0 : StepBase
     {
 
         UIManager.instance.ShowUI<UI_StartGame>();
+        UIManager.instance.ShowUI<UI_Game>();
         yield return EyeAdaptation(10f);
         yield return null;
     }

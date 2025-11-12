@@ -16,15 +16,15 @@ public class UI_Game : UIBase
     public Text _tip;
     public UI_Game()
     {
-        prefabsPath = "UIPrefab/ѧϰģʽ";
+        prefabsPath = "UIPrefab/学习模式";
     }
 
     public override void FindComponents()
     {
         base.FindComponents();
-        StarBG = GetObject("ѧϰģʽ");
-        OneBtn = GetOrAddComponent<Button>("����ѧϰ");
-        TwoBtn = GetOrAddComponent<Button>("��˳��ѧϰ");
+        StarBG = GetObject("学习模式");
+        OneBtn = GetOrAddComponent<Button>("自主学习");
+        TwoBtn = GetOrAddComponent<Button>("按顺序学习");
     }
 
     public override void Init(params object[] args)
