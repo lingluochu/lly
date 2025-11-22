@@ -23,33 +23,32 @@ public class Step_Text0 : StepBase
     {
         base.AddStep();
         steps.Add(Step1());
-        steps.Add(Step2());
-
 
     }
 
     public IEnumerator Step1()
     {
 
+       
+
+        yield return null;
+        yield return SetOldMan("客厅站立1", "Stand_Idle");
+
+        UIManager.instance.ShowUI<UI_Text>();
+        UIManager.instance.FreshUI<UI_Text>(string.Format("提示：与语音输入一致即可"));
+        UIManager.instance.SetTransform<UI_Text>("文本框");
+
         UIManager.instance.ShowUI<UI_StartGame>();
-        UIManager.instance.ShowUI<UI_Game>();
-        yield return EyeAdaptation(10f);
-        yield return null;
-    }
-
-    public IEnumerator Step2()
-    {
-        yield return null;
-        yield return EyeAdaptation(10f);
-
-
-    }
-    public IEnumerator Step3()
-    {
-        yield return null;
-        yield return EyeAdaptation(10f);
+        UIManager.instance.InitUI<UI_StartGame>();
+        UIManager.instance.SetTransform<UI_StartGame>("客厅开始界面");
+        while (UI_Game.isEnterFreeMode == false && UI_Game.isEnterOrderMode == false)
+        {
+            yield return null;
+        }
+        //yield return SetOldMan("客厅坐沙发", "Sit_Idle");
+        yield return SetOldMan("卧室躺床上", "Lay_Idle");
     }
 }
 
-    
+
 
