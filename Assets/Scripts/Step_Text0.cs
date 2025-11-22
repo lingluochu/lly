@@ -8,11 +8,13 @@ public class Step_Text0 : StepBase
     public override void Start()
     {
         base.Start();
+        UIManager.instance.ShowUI<UI_Text>();
+        UIManager.instance.FreshUI<UI_Text>(string.Format("提示：与语音输入一致即可"));
     }
     public override void Update()
     {
         base.Update();
-
+        UIManager.instance.SetTransform<UI_Text>("文本框");
     }
 
     public override void Init()
@@ -33,11 +35,6 @@ public class Step_Text0 : StepBase
 
         yield return null;
         yield return SetOldMan("客厅站立1", "Stand_Idle");
-
-        UIManager.instance.ShowUI<UI_Text>();
-        UIManager.instance.FreshUI<UI_Text>(string.Format("提示：与语音输入一致即可"));
-        UIManager.instance.SetTransform<UI_Text>("文本框");
-
         UIManager.instance.ShowUI<UI_StartGame>();
         UIManager.instance.InitUI<UI_StartGame>();
         UIManager.instance.SetTransform<UI_StartGame>("客厅开始界面");
