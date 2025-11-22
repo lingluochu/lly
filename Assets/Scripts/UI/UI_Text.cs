@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class UI_Text : UIBase
 {
@@ -29,7 +28,8 @@ public class UI_Text : UIBase
     public override void Show()
     {
         uiGameObject.SetActive(true);
-
+        GetOrAddComponent<CanvasGroup>(uiGameObject.name).alpha = 0;
+        GetOrAddComponent<CanvasGroup>(uiGameObject.name).DOFade(1, 1);
     }
     public override void Close()
     {
