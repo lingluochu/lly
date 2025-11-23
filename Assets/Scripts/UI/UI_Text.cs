@@ -1,4 +1,3 @@
-using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -28,8 +27,6 @@ public class UI_Text : UIBase
     public override void Show()
     {
         uiGameObject.SetActive(true);
-        GetOrAddComponent<CanvasGroup>(uiGameObject.name).alpha = 0;
-        GetOrAddComponent<CanvasGroup>(uiGameObject.name).DOFade(1, 1);
     }
     public override void Close()
     {
